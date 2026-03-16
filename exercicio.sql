@@ -12,10 +12,10 @@ USE meu_bd;
  
  INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Naruto Uzumaki' , 'hokage22@gmail.com' , '2000-12-23' , '40028922');
  INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Sasuke Uchiha' , 'chidori@gmail.com' , '2000-12-23' , '6878654');
- INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Sakura Haruno' , 'sasketeamo@gmail.com' , '2000-12-23' , '6456546');
+ INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Sakura Haruno' , 'sasuketeamo@gmail.com' , '2000-12-23' , '6456546');
  INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Kakashi Hatake' , 'kakashi@gmail.com' , '1999-10-19' , '876678');
- INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Madara Uchiha' , 'uchihinhagostoso@gmail.com' , '1889-12-12' , '87589887');
- INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Orochimaru' , 'cobrinhasapeca@gmail.com' , '1778-12-23' , '1234123');
+ INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Madara Uchiha' , 'uchihinha@gmail.com' , '1889-12-12' , '87589887');
+ INSERT INTO usuarios (nome, email, data_nascimento, numero) VALUES ('Orochimaru' , 'cobra@gmail.com' , '1778-12-23' , '1234123');
  
  
  SELECT nome, email
