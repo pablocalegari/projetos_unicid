@@ -28,3 +28,62 @@ INSERT INTO Pacientes VALUES (101, 'Ana Silva', '1990-05-15'), (102, 'Bruno Cost
 'Carla Souza', '1985-12-01');
 INSERT INTO Consultas (id_medico, id_paciente, data_hora, valor_consulta) VALUES
 (1, 101, '2026-04-10 10:00:00', 300.00),
+(1, 103, '2026-04-11 14:00:00', 250.00),
+(2, 102, '2026-04-12 09:00:00', 200.00),
+(3, 101, '2026-04-13 11:00:00', 350.00)
+
+-- 1 adição de coluna--
+ALTER TABLE Medicos ADD COLUMN crm VARCHAR(20);
+
+SELECT * FROM Medicos;
+
+-- 2 Mudança do nome -- 
+UPDATE Pacientes 
+SET  nome = 'Bruno Ferreira'
+WHERE id_paciente  = 102;
+
+-- 3 seleção dos nãos pediatras --
+SELECT nome, especialidade 
+FROM Medicos 
+WHERE especialidade <> 'Pediatria';
+
+-- 4 Listar pacientes por ordem alfabetica ascendente --
+ SELECT * FROM Pacientes 
+ORDER BY nome;
+
+-- 5 Exibição das consultas -- 
+SELECT M.nome AS Medico, P.nome AS Paciente, C.data_hora
+FROM Consultas C
+INNER JOIN Medicos M ON C.id_medico = M.id_medico
+INNER JOIN Pacientes P ON C.id_paciente = P.id_paciente;
+
+-- 6 Listagem dos médicos -- 
+SELECT M.nome, C.data_hora
+FROM Medicos M
+LEFT JOIN Consultas C ON M.id_medico = C.id_medico;
+
+-- 7 faturamento total --
+SELECT SUM(valor_consulta) AS total_faturado, 
+       COUNT(*) AS total_consultas
+FROM Consultas;
+
+-- 8  listagem de faturamento +400.000 --
+SELECT M.especialidade, SUM(C.valor_consulta) AS faturamento
+FROM Consultas C
+INNER JOIN Medicos M ON C.id_medico = M.id_medico
+GROUP BY M.especialidade
+HAVING faturamento > 400.00;
+
+-- 9 Consultar maior que a média das consultas --
+SELECT * FROM Consultas 
+WHERE valor_consulta > (SELECT AVG(valor_consulta) FROM Consultas);
+
+
+-- 10 criação da View -- 
+CREATE VIEW v_resumo_atendimento AS
+SELECT M.nome AS medico, COUNT(DISTINCT C.id_paciente) AS total_pacientes
+FROM Medicos M
+LEFT JOIN Consultas C ON M.id_medico = C.id_medico
+GROUP BY M.nome;
+
+SELECT * FROM v_resumo_atendimento;
